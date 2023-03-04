@@ -13,6 +13,13 @@ public class TodoRepository {
     private List<TodoItem> todoItems = new ArrayList<>();
     
     public List<TodoItem> fetchAllTodoItems (){
+	if (todoItems.size() == 0) {
+	    TodoItem item1 = new TodoItem();
+	    item1.setIsDone(false);
+	    item1.setTask("Task #1");
+	    
+	}
+	
 	return todoItems;	
     }
 
