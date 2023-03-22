@@ -20,9 +20,14 @@ public class TodoRepository {
 	    item1.setTask("Task #1");
 	    
 	    todoItems.add(item1);
-	}
-	
+	}	
 	return todoItems;	
+    }
+    
+    public TodoItem save (TodoItem todoItem) {
+	todoItem.setId(idCounter++);
+	todoItems.add(todoItem);
+	return todoItem;
     }
 
 }
