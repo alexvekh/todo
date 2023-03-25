@@ -2,6 +2,7 @@ package com.boocrun.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +21,22 @@ public class TodoRepository {
 	    item1.setTask("Task #1");
 	    
 	    todoItems.add(item1);
-	}
-	
+	}	
 	return todoItems;	
+    }
+    
+    public TodoItem save (TodoItem todoItem) {
+	todoItem.setId(idCounter++);
+	todoItems.add(todoItem);
+	return todoItem;
+    }
+
+    public void delete(Integer id) {
+	todoItems = todoItems.stream()
+                		.filter(todoItem -> !todoItem.getId().equals(id))
+                		.collect(Collectors.toList());
+		
+	
     }
 
 }

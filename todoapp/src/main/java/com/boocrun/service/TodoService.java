@@ -33,4 +33,19 @@ public class TodoService {
 	}
 	return null;
     }
+
+    public TodoItem createTodoItem() {
+	TodoItem todoItem = new TodoItem();
+	
+	todoItem.setIsDone(false);
+	
+	todoItem = todoRepo.save(todoItem);
+	todoItem.setTask("Task #" + todoItem.getId());
+	return todoItem;
+    }
+
+    public void deleteTodoItem(Integer id) {
+	todoRepo.delete(id);
+	
+    }
 }
