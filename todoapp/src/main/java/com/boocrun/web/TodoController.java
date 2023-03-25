@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,7 +49,6 @@ public class TodoController {
     @PostMapping("/api/todoItems")
     public ResponseEntity<?> createNewTodoItem(){
 	TodoItem todoItem = todoService.createTodoItem();
-	
 	return ResponseEntity.ok(todoItem);
 	
     }
@@ -62,5 +62,13 @@ public class TodoController {
 	// send it! (back to front-end)
 	return ResponseEntity.ok(updateTodoItem);
   }
+    
+    @DeleteMapping("/api/todoItems/{id}")
+	public ResponseEntity<?> deleteTodoItem(@PathVariable Integer id) {
+		
+		todoService.deleteTodoItem(id);
+
+		return ResponseEntity.ok("ok");
+    }
 
 }
