@@ -68,7 +68,7 @@ public class TodoController {
 		
 		todoService.deleteTodoItem(id);
 
-		return ResponseEntity.ok("ok");
+		return ResponseEntity.ok("ok"); 	//can bee (null);
     }
 
 }
